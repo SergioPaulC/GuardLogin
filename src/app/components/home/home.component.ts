@@ -6,24 +6,17 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-
-  
+export class HomeComponent { 
   //constructor
   constructor(private _ar:ActivatedRoute){
-
     this.recoupData();
    }
 
   //mis metodos
   recoupData(){
-
     //utilizando snapshot
     const user = this._ar.snapshot.params;
     console.log(user['email']);
     console.log(user['password']);
   }
-
-
-
 }

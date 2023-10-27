@@ -24,12 +24,9 @@ export class LoginComponent {
   }
 
 
-  constructor(private _route: Router) {
-
-  }
+  constructor(private _route: Router) { }
   // mis metodos
   sendLog(miform: NgForm) {
-
     //inicializamos  currentUser con valores email y passw, con los values que vienen del form
     this.currentUser = {
       email: miform.value.email,
@@ -38,10 +35,10 @@ export class LoginComponent {
     }
     if (this.currentUser.email === this.userAdmin.email && this.currentUser.password === this.userAdmin.password) {
       this.currentUser.isLogged = true;
-
+      // GENERAR TOKEN (de momento lo hacemos con local storage, pero luego será contra una bd) 
+      localStorage.setItem('token', Math.random().toString()) //token es lo que le pasamos al guard a constante TOKEN
       //USANDO NAVIGATE
-      if (this.currentUser.isLogged) 
-      this._route.navigate(['home',this.currentUser.email, this.currentUser.password])
+      this._route.navigate(['home', this.currentUser])
     }
 
   }
